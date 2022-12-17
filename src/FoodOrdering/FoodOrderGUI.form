@@ -252,14 +252,6 @@
     </children>
   </grid>
   <buttonGroups>
-    <group name="bgFoods">
-      <member id="62c3"/>
-      <member id="34323"/>
-      <member id="2ecc9"/>
-      <member id="e262e"/>
-      <member id="16b27"/>
-      <member id="d4ba6"/>
-    </group>
     <group name="bgDiscount">
       <member id="3a74f"/>
       <member id="97d65"/>
