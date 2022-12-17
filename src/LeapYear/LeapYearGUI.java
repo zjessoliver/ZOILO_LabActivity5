@@ -17,14 +17,14 @@ public class LeapYearGUI extends JFrame{
                 try {
                     String input = tfYear.getText();
                     int inputYear = Integer.parseInt(input);
-                    if (inputYear % 4 != 0) {
-                        JOptionPane.showMessageDialog(null, "Not a Leap year");
-                    } else if (inputYear % 400 == 0) {
+                    if (inputYear % 400 == 0) {
                         JOptionPane.showMessageDialog(null, "Leap year");
                     } else if (inputYear % 100 == 0) {
-                        JOptionPane.showMessageDialog(null, "Not a Leap Year");
-                    } else {
+                        JOptionPane.showMessageDialog(null, "Not a Leap year");
+                    } else if (inputYear % 4 == 0) {
                         JOptionPane.showMessageDialog(null, "Leap Year");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Not a Leap Year");
                     }
                 } catch(NullPointerException | NumberFormatException e){
                     JOptionPane.showMessageDialog(null, "Please enter a year");

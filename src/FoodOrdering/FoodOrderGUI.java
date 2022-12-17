@@ -25,43 +25,49 @@ public class FoodOrderGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent ae) {
                 try {
-                    if (!cPizza.isSelected() && !cBurger.isSelected() && !cFries.isSelected() && !cSoftDrinks.isSelected() && !cTea.isSelected() && !cSundae.isSelected()) {
-                        throw new Exception("Please select a food to order");
-                    }
-
-                    // Check if a discount radio button is selected
-                    if (!r5.isSelected() && !r10.isSelected() && !r15.isSelected() && !rNone.isSelected()) {
-                        throw new Exception("Please select a discount");
-                    }
-
                     double price = 0;
+                    boolean selectedFood = false;
+                    boolean selectedDiscount = false;
                     if (cPizza.isSelected()) {
                         price += 100;
+                        selectedFood = true;
                     }
                     if (cBurger.isSelected()) {
                         price += 80;
+                        selectedFood = true;
                     }
                     if (cFries.isSelected()) {
                         price += 65;
+                        selectedFood = true;
                     }
                     if (cSoftDrinks.isSelected()) {
                         price += 55;
+                        selectedFood = true;
                     }
                     if (cTea.isSelected()) {
                         price += 50;
+                        selectedFood = true;
                     }
                     if (cSundae.isSelected()) {
                         price += 40;
+                        selectedFood = true;
                     }
 
                     if (r5.isSelected()) {
                         price *= 0.95;
+                        selectedDiscount = true;
                     }
                     if (r10.isSelected()) {
                         price *= 0.90;
+                        selectedDiscount = true;
                     }
                     if (r15.isSelected()) {
                         price *= 0.85;
+                        selectedDiscount = true;
+                    }
+
+                    if(!selectedFood && !selectedDiscount){
+                        throw new Exception(("Please select food and discount to complete your order."));
                     }
 
                     JOptionPane.showMessageDialog(null, String.format("The total price is %.2f", price));
