@@ -16,31 +16,37 @@ public class SimpleCalcGUI extends JFrame{
         super("Simple Calculator");
         btnCompute.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                String input1 = tfNumber1.getText();
-                String input2 = tfNumber2.getText();
-                int inputNum1 = Integer.parseInt(input1);
-                int inputNum2 = Integer.parseInt(input2);
+            public void actionPerformed(ActionEvent ae) {
+                try {
+                    String input1 = tfNumber1.getText();
+                    String input2 = tfNumber2.getText();
+                    int inputNum1 = Integer.parseInt(input1);
+                    int inputNum2 = Integer.parseInt(input2);
 
-                String operator = (String) cbOperations.getSelectedItem();
+                    String operator = (String) cbOperations.getSelectedItem();
 
-                int result = 0;
-                switch(operator){
-                    case "+":
-                        result = inputNum1 + inputNum2;
-                        break;
-                    case "-":
-                        result = inputNum1 - inputNum2;
-                        break;
-                    case "*":
-                        result = inputNum1 * inputNum2;
-                        break;
-                    case "/":
-                        result = inputNum1 / inputNum2;
-                        break;
+                    int result = 0;
+                    switch (operator) {
+                        case "+":
+                            result = inputNum1 + inputNum2;
+                            break;
+                        case "-":
+                            result = inputNum1 - inputNum2;
+                            break;
+                        case "*":
+                            result = inputNum1 * inputNum2;
+                            break;
+                        case "/":
+                            result = inputNum1 / inputNum2;
+                            break;
+                    }
+
+                    tfResult.setText(Integer.toString(result));
+                }catch(NumberFormatException | NullPointerException e){
+                    JOptionPane.showMessageDialog(null, "Please enter valid integers in both fields");
+                }catch(ArithmeticException e){
+                    JOptionPane.showMessageDialog(null, "Cannot divide by zero");
                 }
-
-                tfResult.setText(Integer.toString(result));
             }
         });
     }
