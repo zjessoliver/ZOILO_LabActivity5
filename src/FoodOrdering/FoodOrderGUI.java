@@ -24,37 +24,50 @@ public class FoodOrderGUI extends JFrame{
         btnOrder.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                double price = 0;
-                if(cPizza.isSelected()){
-                    price += 100;
-                }
-                if(cBurger.isSelected()){
-                    price += 80;
-                }
-                if(cFries.isSelected()){
-                    price += 65;
-                }
-                if(cSoftDrinks.isSelected()){
-                    price += 55;
-                }
-                if(cTea.isSelected()){
-                    price += 50;
-                }
-                if(cSundae.isSelected()){
-                    price += 40;
-                }
+                try {
+                    if (!cPizza.isSelected() && !cBurger.isSelected() && !cFries.isSelected() && !cSoftDrinks.isSelected() && !cTea.isSelected() && !cSundae.isSelected()) {
+                        throw new Exception("Please select a food to order");
+                    }
 
-                if(r5.isSelected()){
-                    price *= 0.95;
-                }
-                if(r10.isSelected()){
-                    price *= 0.90;
-                }
-                if(r15.isSelected()){
-                    price *= 0.85;
-                }
+                    // Check if a discount radio button is selected
+                    if (!r5.isSelected() && !r10.isSelected() && !r15.isSelected() && !rNone.isSelected()) {
+                        throw new Exception("Please select a discount");
+                    }
 
-                JOptionPane.showMessageDialog(null, String.format("The total price is %.2f",price));
+                    double price = 0;
+                    if (cPizza.isSelected()) {
+                        price += 100;
+                    }
+                    if (cBurger.isSelected()) {
+                        price += 80;
+                    }
+                    if (cFries.isSelected()) {
+                        price += 65;
+                    }
+                    if (cSoftDrinks.isSelected()) {
+                        price += 55;
+                    }
+                    if (cTea.isSelected()) {
+                        price += 50;
+                    }
+                    if (cSundae.isSelected()) {
+                        price += 40;
+                    }
+
+                    if (r5.isSelected()) {
+                        price *= 0.95;
+                    }
+                    if (r10.isSelected()) {
+                        price *= 0.90;
+                    }
+                    if (r15.isSelected()) {
+                        price *= 0.85;
+                    }
+
+                    JOptionPane.showMessageDialog(null, String.format("The total price is %.2f", price));
+                }catch(Exception e){
+                    JOptionPane.showMessageDialog(null, e.getMessage());
+                }
             }
         });
     }
